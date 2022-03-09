@@ -1,0 +1,29 @@
+﻿Pradiniai duomenys "U5a.txt":
+-----------------------------------
+| Spalva          |     X |     Y |
+-----------------------------------
+| geltona         |     6 |     7 |
+| raudona         |     2 |     4 |
+| šviesiai mėlyna |     3 |    10 |
+| žalia           |     7 |     8 |
+| geltona         |     2 |     2 |
+| raudona         |     6 |     3 |
+| žalia           |     2 |     8 |
+| geltona         |     1 |     7 |
+| šviesiai mėlyna |     0 |     0 |
+| šviesiai mėlyna |     6 |     0 |
+| šviesiai mėlyna |     3 |     5 |
+-----------------------------------
+
+Pradiniai duomenys "U5b.txt"
+------------------------------------------------------------------------------------
+| Spalva          |  1 X |  1 Y |  2 X |  2 Y |  3 X |  3 Y |   Perimetras/nerasta |
+------------------------------------------------------------------------------------
+| geltona         |      |      |      |      |      |      |                 nėra |
+| žalia           |      |      |      |      |      |      |             negalima |
+| raudona         |      |      |      |      |      |      |                 nėra |
+| šviesiai mėlyna |      |      |      |      |      |      |                 nėra |
+| abnimal         |      |      |      |      |      |      |             negalima |
+| aanimal         |      |      |      |      |      |      |             negalima |
+------------------------------------------------------------------------------------
+

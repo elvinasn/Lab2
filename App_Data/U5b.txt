@@ -1,0 +1,6 @@
+﻿geltona, taip
+žalia, ne
+raudona, taip
+šviesiai mėlyna, taip
+abnimal, ne
+aanimal, ne

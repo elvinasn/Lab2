@@ -1,0 +1,90 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background-color: hsl(0, 0%, 98%);
+    padding: 3rem;
+    color: hsl(234, 12%, 34%);
+}
+.top{
+    text-align: center;
+    padding-bottom: 2rem;
+}
+.run {
+    padding: 1rem 1.5rem;
+    background-color: hsl(245, 75%, 52%);
+    border: 3px solid hsl(245, 75%, 52%);
+    border-radius: 25px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+    box-shadow: 0rem 0.8rem 1.5rem hsl(229, 6%, 80%);
+    transition: .4s ease;
+}
+.run:hover {
+    cursor: pointer;
+    transition: .4s ease;
+    background-color: hsl(245, 75%, 65%)
+}
+.container {
+    width: 100%;
+    min-width: 70rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.container__column {
+    width: 31.5%;
+}
+.column__tworows{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.column__card {
+    background-color: white;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.3rem 0.3rem 0.5rem 0.5rem;
+    border-top: 0.3rem solid;
+    box-shadow: 0rem 0.8rem 1.5rem hsl(229, 6%, 80%);
+    min-height: 35rem;
+}
+.card__header {
+    margin-bottom: .7rem;
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+.column__card-red {
+    border-top-color: hsl(0, 78%, 62%);
+}
+
+.column__card-cyan {
+    border-top-color: hsl(180, 62%, 55%);
+}
+
+.column__card-orange {
+    border-top-color: hsl(34, 97%, 64%);
+}
+
+.column__card-blue {
+    border-top-color: hsl(212, 86%, 64%);
+}
+table{
+    vertical-align: central;
+    text-align: center;
+}
+td{
+    padding: .15rem;
+}
