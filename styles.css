@@ -22,8 +22,8 @@ body {
 .run {
     padding: 1rem 1.5rem;
     background-color: hsl(245, 75%, 52%);
-    border: 3px solid hsl(245, 75%, 52%);
     border-radius: 25px;
+    border: 2px solid black;
     font-size: 1.25rem;
     font-weight: 600;
     color: white;
@@ -33,7 +33,7 @@ body {
 .run:hover {
     cursor: pointer;
     transition: .4s ease;
-    background-color: hsl(245, 75%, 65%)
+    opacity: 0.7;
 }
 .container {
     width: 100%;
