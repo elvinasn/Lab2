@@ -1,11 +1,15 @@
-﻿geltona, 6, 7
-raudona, 2, 4
-šviesiai mėlyna, 3, 10
+﻿šviesiai mėlyna, 0, 0
+šviesiai mėlyna, 8, 0
+šviesiai mėlyna, 4, 20
 žalia, 7, 8
 geltona, 2, 2
 raudona, 6, 3
+raudona, 2, 3
+raudona, 4, 0
 žalia, 2, 8
 geltona, 1, 7
-šviesiai mėlyna, 0, 0
+geltona, 7, 7
+geltona, 4, 0
+raudona, 2, 4
 šviesiai mėlyna, 6, 0
-šviesiai mėlyna, 3, 5
+šviesiai mėlyna, 3, 10

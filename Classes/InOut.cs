@@ -35,7 +35,7 @@ namespace Lab2
             return triangles;
         }
 
-        public static void PrintPointsToTXT(PointsLinkedList points, string fn, string header)
+        public static void Print(PointsLinkedList points, string fn, string header)
         {
             string[] lines = new string[points.Count + 6];
             string dashes = new string('-', 35);
@@ -44,9 +44,9 @@ namespace Lab2
             lines[2] = string.Format("| {0, -15} | {1, 5} | {2, 5} |", "Spalva", "X", "Y");
             lines[3] = dashes;
             int i = 4;
-            for (points.Begin(); points.Exist(); points.Next())
+            foreach(Point point in points)
             {
-                lines[i] = points.Get().ToString();
+                lines[i] = point.ToString();
                 i++;
             }
             lines[lines.Length - 2] = dashes;
@@ -54,7 +54,7 @@ namespace Lab2
             File.AppendAllLines(fn, lines, Encoding.UTF8);
 
         }
-        public static void PrintTrianglesToTXT(TrianglesLinkedList triangles, string fn, string header)
+        public static void Print(TrianglesLinkedList triangles, string fn, string header)
         {
             string[] lines = new string[triangles.Count + 6];
             string dashes = new string('-', 84);
@@ -63,9 +63,9 @@ namespace Lab2
             lines[2] = string.Format("| {0,-15} | {1,4} | {2,4} | {3,4} | {4,4} | {5,4} | {6,4} | {7, 20} |", "Spalva", "1 X", "1 Y", "2 X", "2 Y", "3 X", "3 Y", "Perimetras/nerasta");
             lines[3] = dashes;
             int i = 4;
-            for (triangles.Begin(); triangles.Exist(); triangles.Next())
+            foreach(Triangle triangle in triangles)
             {
-                lines[i] = triangles.Get().ToString();
+                lines[i] = triangle.ToString();
                 i++;
             }
             lines[lines.Length - 2] = dashes;

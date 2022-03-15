@@ -1,9 +1,11 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     min-height: 100vh;
     display: flex;
@@ -15,26 +17,36 @@ body {
     padding: 3rem;
     color: hsl(234, 12%, 34%);
 }
-.top{
+form {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.top {
     text-align: center;
     padding-bottom: 2rem;
 }
-.run {
+
+.button {
     padding: 1rem 1.5rem;
     background-color: hsl(245, 75%, 52%);
     border-radius: 25px;
-    border: 2px solid black;
+    border: none;
     font-size: 1.25rem;
     font-weight: 600;
     color: white;
     box-shadow: 0rem 0.8rem 1.5rem hsl(229, 6%, 80%);
     transition: .4s ease;
+    width: 120px;
+    text-align: center;
 }
-.run:hover {
+
+.button:hover {
     cursor: pointer;
     transition: .4s ease;
     opacity: 0.7;
 }
+
 .container {
     width: 100%;
     min-width: 70rem;
@@ -42,10 +54,12 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
 .container__column {
     width: 31.5%;
 }
-.column__tworows{
+
+.column__tworows {
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -61,11 +75,13 @@ body {
     box-shadow: 0rem 0.8rem 1.5rem hsl(229, 6%, 80%);
     min-height: 35rem;
 }
+
 .card__header {
     margin-bottom: .7rem;
     font-weight: 600;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
 }
+
 .column__card-red {
     border-top-color: hsl(0, 78%, 62%);
 }
@@ -81,10 +97,50 @@ body {
 .column__card-blue {
     border-top-color: hsl(212, 86%, 64%);
 }
-table{
+
+table {
     vertical-align: central;
     text-align: center;
 }
-td{
+
+td {
     padding: .15rem;
+}
+
+.none{
+    display: none;
+}
+.footer {
+    margin-top: 20px;
+    background-color: white;
+    text-align: center;
+    padding: 30px;
+    font-weight: 600;
+    font-size: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0rem 0.8rem 1.5rem hsl(229, 6%, 80%);
+    border-radius: 0.3rem 0.3rem 0.5rem 0.5rem;
+    border-top: 0.3rem solid;
+    border-top-color: yellowgreen;
+}
+.footer__inputs{
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+}
+input[type=text], .footer__inputs span{
+    width: 30px;
+}
+.margin-top{
+    margin-top: 20px;
+}
+.red {
+    margin-top: 15px;
+    color: red;
+}
+.footer__success{
+    margin-top: 15px;
 }

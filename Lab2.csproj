@@ -68,9 +68,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\U5a.txt" />
+    <Content Include="App_Data\U5a1.txt" />
     <Content Include="App_Data\U5b.txt" />
+    <Content Include="App_Data\U5b1.txt" />
     <Content Include="Lab1.aspx" />
-    <Content Include="styles.css" />
+    <Content Include="style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

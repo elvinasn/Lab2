@@ -17,7 +17,7 @@ namespace Lab2
             get
             {
                 if (FirstV != null && SecondV != null)
-                    return Math.Round(Math.Sqrt(Math.Pow((double)FirstV.CoordX - (double)SecondV.CoordX, 2) + Math.Pow((double)FirstV.CoordY - (double)SecondV.CoordY, 2)), 2);
+                    return Math.Sqrt(Math.Pow((double)FirstV.CoordX - (double)SecondV.CoordX, 2) + Math.Pow((double)FirstV.CoordY - (double)SecondV.CoordY, 2));
                 return 0;
             }
         }
@@ -26,7 +26,7 @@ namespace Lab2
             get
             {
                 if(FirstV != null && ThirdV != null)
-                    return Math.Round(Math.Sqrt(Math.Pow((double)FirstV.CoordX - (double)ThirdV.CoordX, 2) + Math.Pow((double)FirstV.CoordY - (double)ThirdV.CoordY, 2)), 2);
+                    return Math.Sqrt(Math.Pow((double)FirstV.CoordX - (double)ThirdV.CoordX, 2) + Math.Pow((double)FirstV.CoordY - (double)ThirdV.CoordY, 2));
                 return 0;
             }
         }
@@ -34,8 +34,8 @@ namespace Lab2
         {
             get
             {
-                if(SecondV != null && ThirdV != null)
-                    return Math.Round(Math.Sqrt(Math.Pow((double)SecondV.CoordX - (double)ThirdV.CoordX, 2) + Math.Pow((double)SecondV.CoordY - (double)ThirdV.CoordY, 2)));
+                if (SecondV != null && ThirdV != null)
+                    return Math.Sqrt(Math.Pow((double)SecondV.CoordX - (double)ThirdV.CoordX, 2) + Math.Pow((double)SecondV.CoordY - (double)ThirdV.CoordY, 2));
                 return 0;
             }
         }
@@ -64,7 +64,7 @@ namespace Lab2
 
 
 
-        public bool isIsosceles() => FirstEdge == SecondEdge || FirstEdge == ThirdEdge || SecondEdge == FirstEdge;
+        public bool IsIsosceles() => FirstEdge == SecondEdge || FirstEdge == ThirdEdge || SecondEdge == ThirdEdge;
 
         ///
         public static bool operator <(Triangle lhs, Triangle rhs) => lhs.Perimeter < rhs.Perimeter;

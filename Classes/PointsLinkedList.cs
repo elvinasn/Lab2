@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace Lab2
 {
-    public sealed class PointsLinkedList
+    public sealed class PointsLinkedList : IEnumerable
     {
         private sealed class Node
         {
@@ -22,16 +23,12 @@ namespace Lab2
         private Node head;
         private Node tail;
         private Node a;
-        private Node b;
-        private Node c;
 
         public PointsLinkedList()
         {
             head = null;
             tail = null;
             a = null;
-            b = null;
-            c = null;
         }
         public int Count
         {
@@ -70,36 +67,12 @@ namespace Lab2
         public bool Exist() => a != null;
         public Point Get() => a.Data;
 
-        public void BeginInner(Point p)
+        public IEnumerator GetEnumerator()
         {
             for (Node d = head; d != null; d = d.Link)
             {
-                if (d.Data.Equals(p))
-                {
-                    b = d.Link;
-                    return;
-                }
-
+                yield return d.Data;
             }
         }
-        public void NextInner() => b = b.Link;
-        public bool ExistInner() => b != null;
-
-        public Point GetInner() => b.Data;
-        public void BeginInnerInner(Point p)
-        {
-            for (Node d = head; d != null; d = d.Link)
-            {
-                if (d.Data.Equals(p))
-                {
-                    c = d.Link;
-                    return;
-                }
-
-            }
-        }
-        public void NextInnerInner() => c = c.Link;
-        public bool ExistInnerInner() => c != null;
-        public Point GetInnerInner() => c.Data;
     }
 }

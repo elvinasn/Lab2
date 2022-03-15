@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace Lab2
 {
-    public class TrianglesLinkedList
+    public sealed class TrianglesLinkedList : IEnumerable
     {
         private sealed class Node
         {
@@ -64,6 +65,28 @@ namespace Lab2
 
         public bool Exist() => a != null;
         public Triangle Get() => a.Data;
+
+        public void Remove()
+        {
+            bool isTail = false;
+            if (a == head)
+                head = a.Link;
+            else
+            {
+                if (a == tail)
+                    isTail = true;
+                Node d1;
+                for(d1 = head; d1!= null; d1 = d1.Link)
+                {
+                    if (d1.Link == a)
+                        break;
+                }
+                d1.Link = a.Link;
+                a.Link = null;
+                if (isTail)
+                    tail = d1;
+            }
+        }
         public void Set(Triangle tri) => a.Data = tri;
 
         public void Sort(TriangleComparator comparator)
@@ -82,7 +105,12 @@ namespace Lab2
             }
         }
 
-      
-
+        public IEnumerator GetEnumerator()
+        {
+            for (Node d = head; d != null; d = d.Link)
+            {
+                yield return d.Data;
+            }
+        }
     }
 }
