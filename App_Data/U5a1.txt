@@ -1,1 +1,14 @@
-﻿
+﻿šviesiai mėlyna, 2, 0
+šviesiai mėlyna, 3, 0
+šviesiai mėlyna, 3, 21
+geltona, 2, 2
+raudona, 2, 3
+raudona, 2, 3
+raudona, 4, 0
+žalia, 2, 8
+geltona, 1, 7
+geltona, 2, 7
+geltona, 4, 0
+raudona, 2, 4
+šviesiai mėlyna, 5, 0
+šviesiai mėlyna, 3, 10

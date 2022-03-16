@@ -10,8 +10,8 @@ namespace Lab2
 {
     public partial class Lab1 : System.Web.UI.Page
     {
-        private const string pointsPath = @"App_Data\U5a.txt";
-        private const string coloursPath = @"App_Data\U5b.txt";
+        private const string pointsPath = @"App_Data\U5a1.txt";
+        private const string coloursPath = @"App_Data\U5b1.txt";
         private const string resultsPath = @"Rezultatai\Results.txt";
         private const string startData = @"Rezultatai\StartData.txt";
 

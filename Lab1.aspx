@@ -63,7 +63,6 @@
             <asp:Label ID="Error" runat="server" Text ="VESKITE SVEIKUOSIUS SKAIČIUS IR NEPALIKITE TUŠČIŲ LAUKŲ!" CssClass ="red none"></asp:Label>
              <asp:Button ID="Trinti" runat="server" Text="Trinti" CssClass="button margin-top" OnClick="Trinti_Click" />
             <asp:Label ID="Success" runat="server" CssClass ="footer__success"></asp:Label>
-        &nbsp;&nbsp;&nbsp;
         </div>
     </form>
 </body>
