@@ -7,6 +7,11 @@ namespace Lab2
 {
     public static class Tasks
     {
+        /// <summary>
+        /// solves the task - finds biggest isosceles triangle for each given color from given points
+        /// </summary>
+        /// <param name="points">given points</param>
+        /// <param name="triangles">given triangles</param>
         public static void Solve(PointsLinkedList points, TrianglesLinkedList triangles)
         {
             bool NEXTFLAG;
@@ -72,6 +77,11 @@ namespace Lab2
             }
         }
 
+        /// <summary>
+        /// filters triangle list to only those, which were found
+        /// </summary>
+        /// <param name="filterFrom">list where to filter from</param>
+        /// <returns>filtered list of only found triangles</returns>
         public static TrianglesLinkedList FilterSuccess(TrianglesLinkedList filterFrom)
         {
             TrianglesLinkedList filtered = new TrianglesLinkedList();
@@ -83,6 +93,11 @@ namespace Lab2
             return filtered;
 
         }
+        /// <summary>
+        /// filter triangle list to only those, which were not found
+        /// </summary>
+        /// <param name="filterFrom">list where to filter from</param>
+        /// <returns>filtered list of only unfound triangles</returns>
         public static TrianglesLinkedList FilterUnSuccess(TrianglesLinkedList filterFrom)
         {
             TrianglesLinkedList filtered = new TrianglesLinkedList();
@@ -93,10 +108,21 @@ namespace Lab2
             }
             return filtered;
         }
+        /// <summary>
+        /// removes triangles from linked list if given coordinates matches
+        /// </summary>
+        /// <param name="triangles">list of triangles</param>
+        /// <param name="x1">first X</param>
+        /// <param name="y1">first Y</param>
+        /// <param name="x2">second X</param>
+        /// <param name="y2">second Y</param>
+        /// <param name="x3">third X</param>
+        /// <param name="y3">third Y</param>
+        /// <param name="success"> bool if it was removed(true if yes)</param>
 
-        public static void Remove(TrianglesLinkedList triangles, int x1, int y1, int x2, int y2, int x3, int y3, out bool success)
+        public static bool Remove(TrianglesLinkedList triangles, int x1, int y1, int x2, int y2, int x3, int y3)
         {
-            success = false;
+            bool success = false;
             if (triangles != null)
             {
                 for (triangles.Begin(); triangles.Exist(); triangles.Next())
@@ -116,7 +142,7 @@ namespace Lab2
                     }
                 }
             }
-  
+            return success;
         }
 
     }

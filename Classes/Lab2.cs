@@ -6,8 +6,17 @@ using System.Web.UI.WebControls;
 
 namespace Lab2
 {
+    /// <summary>
+    /// partial class to work with form elements
+    /// </summary>
     public partial class Lab1 : System.Web.UI.Page
     {
+        /// <summary>
+        /// fills asp net table with given points list
+        /// </summary>
+        /// <param name="points">list of points</param>
+        /// <param name="Table1">table which to fill</param>
+        /// <param name="label">label if table is empty</param>
         protected static void FillTable(PointsLinkedList points, ref Table Table1, ref Label label)
         {
             Table1.Rows.Clear();
@@ -43,6 +52,12 @@ namespace Lab2
                 Table1.Rows.Add(row);
             }
         }
+        /// <summary>
+        /// fills asp net table with given triangles list
+        /// </summary>
+        /// <param name="triangles">given triangles list</param>
+        /// <param name="Table1">table which to fill</param>
+        /// <param name="label">label if the table is empty</param>
         protected static void FillTable(TrianglesLinkedList triangles, ref Table Table1, ref Label label)
         {
             if(triangles != null)

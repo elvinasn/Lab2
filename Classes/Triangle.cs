@@ -5,6 +5,9 @@ using System.Web;
 
 namespace Lab2
 {
+    /// <summary>
+    /// data class to store Triangle object
+    /// </summary>
     public class Triangle
     {
         public string Color { get; set; }
@@ -55,7 +58,11 @@ namespace Lab2
                 return 0;
             }
         }
-
+        /// <summary>
+        /// constructor with parameters
+        /// </summary>
+        /// <param name="color">given color</param>
+        /// <param name="able">given bool if it is possible to create triangle</param>
         public Triangle(string color, bool able)
         {
             Color = color;
@@ -63,14 +70,32 @@ namespace Lab2
         }
 
 
-
+        /// <summary>
+        /// checks if triangle is isosceles
+        /// </summary>
+        /// <returns>true if isosceles, false if not</returns>
         public bool IsIsosceles() => FirstEdge == SecondEdge || FirstEdge == ThirdEdge || SecondEdge == ThirdEdge;
 
-        ///
+        /// <summary>
+        /// overriden (<) operator to compare two triangles by their perimeters
+        /// </summary>
+        /// <param name="lhs">lhs triangle</param>
+        /// <param name="rhs">rhs triangle</param>
+        /// <returns>bool if first < second</returns>
         public static bool operator <(Triangle lhs, Triangle rhs) => lhs.Perimeter < rhs.Perimeter;
 
+        /// <summary>
+        /// overriden (>) operator to compare two triangles by their perimeters
+        /// </summary>
+        /// <param name="lhs">lhs triangle</param>
+        /// <param name="rhs">rhs triangle</param>
+        /// <returns>bool if first > second</returns>
         public static bool operator >(Triangle lhs, Triangle rhs) => lhs.Perimeter > rhs.Perimeter;
 
+        /// <summary>
+        /// overriden tostring method to return formatted data of triangle
+        /// </summary>
+        /// <returns>formatted line of triangle data</returns>
         public override string ToString()
         {
             if(Able && Perimeter > 0)
@@ -90,6 +115,11 @@ namespace Lab2
             
         }
 
+        /// <summary>
+        /// compares triangle to given triangle by their colors
+        /// </summary>
+        /// <param name="other">second triangle</param>
+        /// <returns>returns >0 if current color > other color, 0 if equals and <0 if other color > current color</returns>
         public int CompareTo(Triangle other)
         {
             return this.Color.CompareTo(other.Color);

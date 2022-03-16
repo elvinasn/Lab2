@@ -18,6 +18,11 @@ namespace Lab2
         private PointsLinkedList points = InOut.ReadPoints(HttpContext.Current.Server.MapPath(pointsPath));
         private TrianglesLinkedList triangles = InOut.ReadTriangles(HttpContext.Current.Server.MapPath(coloursPath));
 
+        /// <summary>
+        /// page load method
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             File.Delete(Server.MapPath("~") + startData);
@@ -36,6 +41,11 @@ namespace Lab2
             }
         }
 
+        /// <summary>
+        /// run button click method
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Button1_Click(object sender, EventArgs e)
         {
             Tasks.Solve(points, triangles);
@@ -50,6 +60,11 @@ namespace Lab2
 
         }
 
+        /// <summary>
+        /// remove button click method
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Trinti_Click(object sender, EventArgs e)
         {
             string x1 = X1.Text;
@@ -67,12 +82,13 @@ namespace Lab2
             {
                 if (!Error.CssClass.Contains("none"))
                     Error.CssClass += "none";
-                Tasks.Remove((TrianglesLinkedList)Session["found"], firstX, firstY, secondX, secondY, thirdX, thirdY, out bool success);
-                if (success)
+                if (Tasks.Remove((TrianglesLinkedList)Session["found"], firstX, firstY, secondX, secondY, thirdX, thirdY))
                     Success.Text = "Šalinimas pavyko.";
-                else
+                else  
                     Success.Text = "Šalinimas nepavyko.";
                 FillTable((TrianglesLinkedList)Session["found"], ref results1, ref Nera3);
+                InOut.Print((TrianglesLinkedList)Session["found"], Server.MapPath("~") + resultsPath, "Rasti perimetrai:");
+                InOut.Print((TrianglesLinkedList)Session["unfound"], Server.MapPath("~") + resultsPath, "Nerasti perimetrai:");
             }
             
 
