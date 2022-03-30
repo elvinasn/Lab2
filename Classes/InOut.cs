@@ -17,10 +17,9 @@ namespace Lab2
         /// </summary>
         /// <param name="fileName">file to read from</param>
         /// <returns>linked list of points</returns>
-        public static PointsLinkedList ReadPoints(string fileName)
+        public static LinkList<Point> ReadPoints(List<string> lines)
         {
-            PointsLinkedList points = new PointsLinkedList();
-            string[] lines = File.ReadAllLines(fileName, Encoding.UTF8);
+            LinkList<Point> points = new LinkList<Point>();
             foreach (string line in lines)
             {
                 string[] values = line.Split(new[] { ", " }, StringSplitOptions.None);
@@ -35,10 +34,9 @@ namespace Lab2
         /// </summary>
         /// <param name="fileName">file to read from</param>
         /// <returns>linked list of triangles</returns>
-        public static TrianglesLinkedList ReadTriangles(string fileName)
+        public static LinkList<Triangle> ReadTriangles(List<string> lines)
         {
-            TrianglesLinkedList triangles = new TrianglesLinkedList();
-            string[] lines = File.ReadAllLines(fileName, Encoding.UTF8);
+            LinkList<Triangle> triangles = new LinkList<Triangle>();
             foreach (string line in lines)
             {
                 string[] values = line.Split(new[] { ", " }, StringSplitOptions.None);
@@ -54,7 +52,7 @@ namespace Lab2
         /// <param name="points">given list of points</param>
         /// <param name="fn">file where to print</param>
         /// <param name="header">header of the table</param>
-        public static void Print(PointsLinkedList points, string fn, string header)
+        public static void Print(LinkList<Point> points, string fn, string header)
         {
             string[] lines = new string[points.Count + 6];
             string dashes = new string('-', 35);
@@ -79,7 +77,7 @@ namespace Lab2
         /// <param name="triangles">given list of triangles</param>
         /// <param name="fn">file where to print</param>
         /// <param name="header">header of the table</param>
-        public static void Print(TrianglesLinkedList triangles, string fn, string header)
+        public static void Print(LinkList<Triangle> triangles, string fn, string header)
         {
             string[] lines;
             if (triangles.Count == 0)

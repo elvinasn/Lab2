@@ -9,14 +9,14 @@ namespace Lab2
     /// <summary>
     /// linked list class to store triangles
     /// </summary>
-    public sealed class TrianglesLinkedList : IEnumerable
+    public sealed class LinkList<T> : IEnumerable<T> where T: class, IComparable<T>
     {
         /// <summary>
         /// Node class of linked list
         /// </summary>
         private sealed class Node
         {
-            public Triangle Data { get; set; }
+            public T Data { get; set; }
             public Node Link { get; set; }
 
             /// <summary>
@@ -29,7 +29,7 @@ namespace Lab2
             /// </summary>
             /// <param name="value">given value(data)</param>
             /// <param name="link">link to other Node</param>
-            public Node(Triangle value, Node link)
+            public Node(T value, Node link)
             {
                 Data = value;
                 Link = link;
@@ -61,7 +61,7 @@ namespace Lab2
         /// <summary>
         /// constructor
         /// </summary>
-        public TrianglesLinkedList()
+        public LinkList()
         {
             head = null;
             tail = null;
@@ -71,9 +71,9 @@ namespace Lab2
         /// adds given triangle to the end of linked lsit
         /// </summary>
         /// <param name="triangle">triangle to add</param>
-        public void Add(Triangle triangle)
+        public void Add(T t)
         {
-            Node newNode = new Node(triangle, null);
+            Node newNode = new Node(t, null);
             if (head != null)
             {
                 tail.Link = newNode;
@@ -106,7 +106,11 @@ namespace Lab2
         /// gets current element in for cycle in the outside of class
         /// </summary>
         /// <returns></returns>
-        public Triangle Get() => a.Data;
+        public T Get()
+        {
+            if (a == null) return null;
+            return a.Data;
+        }
 
         /// <summary>
         /// removes current triangle from linked list
@@ -136,25 +140,25 @@ namespace Lab2
         /// sets current triangle to given triangle
         /// </summary>
         /// <param name="tri">given triangle</param>
-        public void Set(Triangle tri) => a.Data = tri;
+        public void Set(T t) => a.Data = t;
 
         /// <summary>
         /// sorts triangles by given comparator
         /// </summary>
         /// <param name="comparator">given comparator</param>
-        public void Sort(TriangleComparator comparator)
+        public void Sort()
         {
             for(Node d1 = head; d1!= null; d1 = d1.Link)
             {
                 Node minv = d1;
                 for(Node d2 = d1.Link; d2!= null; d2 = d2.Link)
                 {
-                    if (comparator.Compare(minv.Data, d2.Data) > 0)
+                    if (minv.Data.CompareTo(d2.Data) > 0)
                         minv = d2;
                 }
-                Triangle tri = d1.Data;
+                T t = d1.Data;
                 d1.Data = minv.Data;
-                minv.Data = tri;
+                minv.Data = t;
             }
         }
 
@@ -168,6 +172,11 @@ namespace Lab2
             {
                 yield return d.Data;
             }
+        }
+
+        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        {
+            throw new NotImplementedException();
         }
     }
 }

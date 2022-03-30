@@ -12,7 +12,7 @@ namespace Lab2
         /// </summary>
         /// <param name="points">given points</param>
         /// <param name="triangles">given triangles</param>
-        public static void Solve(PointsLinkedList points, TrianglesLinkedList triangles)
+        public static void Solve(LinkList<Point> points, LinkList<Triangle> triangles)
         {
             bool NEXTFLAG;
             bool NEXTSECONDFLAG;
@@ -82,9 +82,9 @@ namespace Lab2
         /// </summary>
         /// <param name="filterFrom">list where to filter from</param>
         /// <returns>filtered list of only found triangles</returns>
-        public static TrianglesLinkedList FilterSuccess(TrianglesLinkedList filterFrom)
+        public static LinkList<Triangle> FilterSuccess(LinkList<Triangle> filterFrom)
         {
-            TrianglesLinkedList filtered = new TrianglesLinkedList();
+            LinkList<Triangle> filtered = new LinkList<Triangle>();
             for (filterFrom.Begin(); filterFrom.Exist(); filterFrom.Next())
             {
                 if (filterFrom.Get().Perimeter != 0)
@@ -98,9 +98,9 @@ namespace Lab2
         /// </summary>
         /// <param name="filterFrom">list where to filter from</param>
         /// <returns>filtered list of only unfound triangles</returns>
-        public static TrianglesLinkedList FilterUnSuccess(TrianglesLinkedList filterFrom)
+        public static LinkList<Triangle> FilterUnSuccess(LinkList<Triangle> filterFrom)
         {
-            TrianglesLinkedList filtered = new TrianglesLinkedList();
+            LinkList<Triangle> filtered = new LinkList<Triangle>();
             for (filterFrom.Begin(); filterFrom.Exist(); filterFrom.Next())
             {
                 if (!(filterFrom.Get().Perimeter != 0))
@@ -120,7 +120,7 @@ namespace Lab2
         /// <param name="y3">third Y</param>
         /// <param name="success"> bool if it was removed(true if yes)</param>
 
-        public static bool Remove(TrianglesLinkedList triangles, int x1, int y1, int x2, int y2, int x3, int y3)
+        public static bool Remove(LinkList<Triangle> triangles, int x1, int y1, int x2, int y2, int x3, int y3)
         {
             bool success = false;
             if (triangles != null)

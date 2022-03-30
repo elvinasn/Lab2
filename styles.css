@@ -13,35 +13,58 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'Poppins', sans-serif;
-    background-color: hsl(0, 0%, 98%);
     padding: 3rem;
     color: hsl(234, 12%, 34%);
 }
+
 form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 .top {
     text-align: center;
     padding-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items : center;
+    justify-content: center;
+    gap: 40px;
+}
+.top > input[type="file"]{
+   margin-left: 100px;
 }
 
-.button {
-    padding: 1rem 1.5rem;
+.button, .uploadButton {
     background-color: hsl(245, 75%, 52%);
     border-radius: 25px;
     border: none;
-    font-size: 1.25rem;
     font-weight: 600;
     color: white;
     box-shadow: 0rem 0.8rem 1.5rem hsl(229, 6%, 80%);
     transition: .4s ease;
-    width: 120px;
     text-align: center;
 }
+.button {
+    font-size: 1.25rem;
+    padding: 1rem 1.5rem;
+    min-width: 120px;
+}
+.uploadButton{
+    padding: 10px 30px;
+}
+input:disabled {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+}
+input:disabled:hover {
+   cursor: initial;
+   opacity : 1;
+}
 
-.button:hover {
+.button:hover, .uploadButton:hover {
     cursor: pointer;
     transition: .4s ease;
     opacity: 0.7;
@@ -107,9 +130,10 @@ td {
     padding: .15rem;
 }
 
-.none{
+.none {
     display: none;
 }
+
 .footer {
     margin-top: 20px;
     background-color: white;
@@ -126,21 +150,26 @@ td {
     border-top: 0.3rem solid;
     border-top-color: yellowgreen;
 }
-.footer__inputs{
+
+.footer__inputs {
     display: flex;
     gap: 50px;
     justify-content: center;
 }
-input[type=text], .footer__inputs span{
-    width: 30px;
-}
-.margin-top{
+
+    input[type=text], .footer__inputs span {
+        width: 30px;
+    }
+
+.margin-top {
     margin-top: 20px;
 }
+
 .red {
     margin-top: 15px;
     color: red;
 }
-.footer__success{
+
+.footer__success {
     margin-top: 15px;
 }

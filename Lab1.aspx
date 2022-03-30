@@ -5,12 +5,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Trikampiai</title>
+    <link rel="stylesheet" href="styles.css" runat="server" type="text/css"/>
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="top">
-            <asp:Button ID="Vykdyti" runat="server" OnClick="Button1_Click" Text="Vykdyti" CssClass="button" />
-            <link rel="stylesheet" href="style.css" runat="server" type="text/css"/>
+            <div> <input id="FileUpload1" type="file" runat="server" />
+            <asp:Button ID="Upload1" runat="server" OnClick="Upload1_Click" Text="Pateikti" CssClass="uploadButton" /></div>
+            <div> <input id="FileUpload2" type="file" runat="server" />
+            <asp:Button ID="Upload2" runat="server" OnClick="Upload2_Click" Text="Pateikti" CssClass="uploadButton" /></div>
+           
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Skaičiuoti" CssClass="button" />
         </div>
         
         <div class ="container">
@@ -53,12 +58,12 @@
                 <asp:Label ID="Label6" runat="server" Text="Y3"></asp:Label>
             </div>
             <div class="footer__inputs">
-                <asp:TextBox ID="X1" runat="server"></asp:TextBox>
-                <asp:TextBox ID="Y1" runat="server"></asp:TextBox>
-                <asp:TextBox ID="X2" runat="server"></asp:TextBox>
-                <asp:TextBox ID="Y2" runat="server"></asp:TextBox>
-                <asp:TextBox ID="X3" runat="server"></asp:TextBox>
-                <asp:TextBox ID="Y3" runat="server"></asp:TextBox>
+                <asp:TextBox ID="X1" runat="server" placeholder="0"></asp:TextBox>
+                <asp:TextBox ID="Y1" runat="server" placeholder="0"></asp:TextBox>
+                <asp:TextBox ID="X2" runat="server" placeholder="0"></asp:TextBox>
+                <asp:TextBox ID="Y2" runat="server" placeholder="0"></asp:TextBox>
+                <asp:TextBox ID="X3" runat="server" placeholder="0"></asp:TextBox>
+                <asp:TextBox ID="Y3" runat="server" placeholder="0"></asp:TextBox>
               </div>
             <asp:Label ID="Error" runat="server" Text ="VESKITE SVEIKUOSIUS SKAIČIUS IR NEPALIKITE TUŠČIŲ LAUKŲ!" CssClass ="red none"></asp:Label>
              <asp:Button ID="Trinti" runat="server" Text="Trinti" CssClass="button margin-top" OnClick="Trinti_Click" />

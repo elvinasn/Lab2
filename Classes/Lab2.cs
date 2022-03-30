@@ -17,13 +17,17 @@ namespace Lab2
         /// <param name="points">list of points</param>
         /// <param name="Table1">table which to fill</param>
         /// <param name="label">label if table is empty</param>
-        protected static void FillTable(PointsLinkedList points, ref Table Table1, ref Label label)
+        protected static void FillTable(LinkList<Point> points, ref Table Table1, ref Label label)
         {
             Table1.Rows.Clear();
             if(points.Count == 0)
             {
                 label.CssClass = label.CssClass.Replace("none", "");
                 return;
+            }
+            else
+            {
+                label.CssClass = "none";
             }
             TableRow row = new TableRow();
             TableCell cell1 = new TableCell();
@@ -58,7 +62,7 @@ namespace Lab2
         /// <param name="triangles">given triangles list</param>
         /// <param name="Table1">table which to fill</param>
         /// <param name="label">label if the table is empty</param>
-        protected static void FillTable(TrianglesLinkedList triangles, ref Table Table1, ref Label label)
+        protected static void FillTable(LinkList<Triangle> triangles, ref Table Table1, ref Label label)
         {
             if(triangles != null)
             {

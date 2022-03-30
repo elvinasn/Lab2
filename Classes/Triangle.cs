@@ -8,7 +8,7 @@ namespace Lab2
     /// <summary>
     /// data class to store Triangle object
     /// </summary>
-    public class Triangle
+    public class Triangle : IComparable<Triangle>, IEquatable<Triangle>
     {
         public string Color { get; set; }
         public Point FirstV { get; set; }
@@ -115,14 +115,14 @@ namespace Lab2
             
         }
 
-        /// <summary>
-        /// compares triangle to given triangle by their colors
-        /// </summary>
-        /// <param name="other">second triangle</param>
-        /// <returns>returns >0 if current color > other color, 0 if equals and <0 if other color > current color</returns>
+        public bool Equals(Triangle other)
+        {
+            return this.Equals(other);
+        }
+
         public int CompareTo(Triangle other)
         {
-            return this.Color.CompareTo(other.Color);
+            return Color.CompareTo(other.Color);
         }
     }
 }

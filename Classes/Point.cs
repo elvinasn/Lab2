@@ -8,12 +8,12 @@ namespace Lab2
     /// <summary>
     /// data class to store Point
     /// </summary>
-    public class Point
+    public class Point : IComparable<Point>, IEquatable<Point>
     {
         public string Color { get; set; }
         public int CoordX { get; set; }
         public int CoordY { get; set; }
-        
+
         /// <summary>
         /// constructor with parameters
         /// </summary>
@@ -36,6 +36,16 @@ namespace Lab2
         public override string ToString()
         {
             return string.Format("| {0, -15} | {1, 5} | {2, 5} |", Color, CoordX, CoordY);
+        }
+
+        public int CompareTo(Point other)
+        {
+            return Color.CompareTo(other.Color);
+        }
+
+        public bool Equals(Point other)
+        {
+            return this.Color.Equals(other.Color);
         }
     }
 
