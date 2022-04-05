@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Trikampiai</title>
-    <link rel="stylesheet" href="styles.css" runat="server" type="text/css"/>
+     <link rel="stylesheet" href="styles.css" runat="server" type="text/css"/>
 </head>
 <body>
     <form id="form1" runat="server">

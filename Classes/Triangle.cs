@@ -10,6 +10,7 @@ namespace Lab2
     /// </summary>
     public class Triangle : IComparable<Triangle>, IEquatable<Triangle>
     {
+
         public string Color { get; set; }
         public Point FirstV { get; set; }
         public Point SecondV { get; set; }
@@ -115,11 +116,29 @@ namespace Lab2
             
         }
 
+        /// <summary>
+        /// implements IEquatable interface, checks if two triangles equals by their color
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns>true if triangles' colors matches, false if not</returns>
         public bool Equals(Triangle other)
         {
-            return this.Equals(other);
+            return Color == other.Color;
         }
 
+        /// <summary>
+        /// overriden gethascode by triangle color
+        /// </summary>
+        /// <returns>overriden hashcode</returns>
+        public override int GetHashCode()
+        {
+            return Color.GetHashCode();
+        }
+        /// <summary>
+        /// Implements IComparable interface, compares two triangles by their color
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns> returns >0 if first > second, 0 if first = second, <0 if first < second, compares by their color</returns>
         public int CompareTo(Triangle other)
         {
             return Color.CompareTo(other.Color);

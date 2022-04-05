@@ -8,7 +8,7 @@ using System.Text;
 namespace Lab2
 {
     /// <summary>
-    /// static class for in and out utils
+    /// static class for in and out tasks
     /// </summary>
     public static class InOut
     {
@@ -47,63 +47,29 @@ namespace Lab2
         }
 
         /// <summary>
-        /// prints formatted points' data in table to  given file
+        /// Prints given list of type to txt
         /// </summary>
-        /// <param name="points">given list of points</param>
-        /// <param name="fn">file where to print</param>
-        /// <param name="header">header of the table</param>
-        public static void Print(LinkList<Point> points, string fn, string header)
+        /// <typeparam name="Type">Type</typeparam>
+        /// <param name="list">list of data</param>
+        /// <param name="fn">filename</param>
+        /// <param name="header">header of table</param>
+        /// <param name="upperLine">upperLine of table</param>
+        public static void PrintTxt <Type> (IEnumerable<Type> list, string fn, string header, string upperLine)
         {
-            string[] lines = new string[points.Count + 6];
-            string dashes = new string('-', 35);
+            string[] lines = new string[list.Count() + 6];
+            string dashes = new string('-', upperLine.Length);
             lines[0] = header;
             lines[1] = dashes;
-            lines[2] = string.Format("| {0, -15} | {1, 5} | {2, 5} |", "Spalva", "X", "Y");
+            lines[2] = upperLine;
             lines[3] = dashes;
             int i = 4;
-            foreach(Point point in points)
+            foreach(Type T in list)
             {
-                lines[i] = point.ToString();
+                lines[i] = T.ToString();
                 i++;
             }
             lines[lines.Length - 2] = dashes;
             lines[lines.Length - 1] = "";
-            File.AppendAllLines(fn, lines, Encoding.UTF8);
-
-        }
-        /// <summary>
-        /// prints formatted triangles' data in table to given file
-        /// </summary>
-        /// <param name="triangles">given list of triangles</param>
-        /// <param name="fn">file where to print</param>
-        /// <param name="header">header of the table</param>
-        public static void Print(LinkList<Triangle> triangles, string fn, string header)
-        {
-            string[] lines;
-            if (triangles.Count == 0)
-            {
-                lines = new string[2];
-                lines[0] = header;
-                lines[1] = "Nėra tokių trikampių.";
-            }
-            else
-            {
-                lines = new string[triangles.Count + 6];
-                string dashes = new string('-', 84);
-                lines[0] = header;
-                lines[1] = dashes;
-                lines[2] = string.Format("| {0,-15} | {1,4} | {2,4} | {3,4} | {4,4} | {5,4} | {6,4} | {7, 20} |", "Spalva", "1 X", "1 Y", "2 X", "2 Y", "3 X", "3 Y", "Perimetras/nerasta");
-                lines[3] = dashes;
-                int i = 4;
-                foreach (Triangle triangle in triangles)
-                {
-                    lines[i] = triangle.ToString();
-                    i++;
-                }
-                lines[lines.Length - 2] = dashes;
-                lines[lines.Length - 1] = "";
-            }
-            
             File.AppendAllLines(fn, lines, Encoding.UTF8);
 
         }

@@ -12,6 +12,11 @@ namespace Lab2
     {
         private const string resultsPath = @"Rezultatai\Results.txt";
         private const string startData = @"Rezultatai\StartData.txt";
+        private readonly string[] triangleHeaders = { "Spalva", "1X", "1Y", "2X", "2Y", "3X", "3Y", "Perimetras" };
+        private readonly string[] pointHeaders = { "Spalva", "X", "Y" };
+        private readonly string trianglesUpper = 
+            string.Format("| {0,-15} | {1,4} | {2,4} | {3,4} | {4,4} | {5,4} | {6,4} | {7, 20} |", "Spalva", "1 X", "1 Y", "2 X", "2 Y", "3 X", "3 Y", "Perimetras/nerasta");
+        private readonly string pointsUpper = string.Format("| {0, -15} | {1, 5} | {2, 5} |", "Spalva", "X", "Y");
 
 
         /// <summary>
@@ -20,34 +25,45 @@ namespace Lab2
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
-        {
+        { 
+
+            File.Delete(Server.MapPath("~") + startData);
+            File.Delete(Server.MapPath("~") + resultsPath);
+              
             Button1.Enabled = false;
             Trinti.Enabled = false;
 
-            File.Delete(Server.MapPath("~") + startData);
-            File.Delete(Server.MapPath("~") + resultsPath);            
-            
-            if(Session["found"] != null)
-            {
-                FillTable((LinkList<Triangle>)Session["found"], ref results1, ref Nera3);
-            }
-            if(Session["unfound"] != null)
-            {
-                FillTable((LinkList<Triangle>)Session["unfound"], ref results2, ref Nera4);
-            }
-            if (Session["triangles"] != null)
-            {
-                FillTable((LinkList<Triangle>)Session["triangles"], ref start1, ref Nera1);
-            }
-            if (Session["points"] != null)
-            {
-                FillTable((LinkList<Point>)Session["points"], ref start2, ref Nera2);
-            }
             if (Session["triangles"] != null && Session["points"] != null)
             {
                 Button1.Enabled = true;
                 Trinti.Enabled = true;
             }
+            if (Session["found"] != null)
+            {
+
+                FillTable((LinkList<Triangle>)Session["found"], ref results1, ref Nera3, triangleHeaders);
+                InOut.PrintTxt((LinkList<Triangle>)Session["found"], Server.MapPath("~") + resultsPath, "Rasti perimetrai:",
+               trianglesUpper);
+                Button1.Enabled = false;
+            }
+            if(Session["unfound"] != null)
+            {
+                FillTable((LinkList<Triangle>)Session["unfound"], ref results2, ref Nera4, triangleHeaders);
+                InOut.PrintTxt((LinkList<Triangle>)Session["unfound"], Server.MapPath("~") + resultsPath, "Nerasti perimetrai:",
+                trianglesUpper);
+            }
+            if (Session["triangles"] != null)
+            {
+                FillTable((LinkList<Triangle>)Session["triangles"], ref start1, ref Nera1, triangleHeaders);
+                InOut.PrintTxt((LinkList<Triangle>)Session["triangles"], Server.MapPath("~") + startData, "Pradiniai duomenys \"U5b.txt\"",
+                trianglesUpper);
+            }
+            if (Session["points"] != null)
+            {
+                FillTable((LinkList<Point>)Session["points"], ref start2, ref Nera2, pointHeaders);
+                InOut.PrintTxt((LinkList<Point>)Session["points"], Server.MapPath("~") + startData, "Pradiniai duomenys \"U5a.txt\":",pointsUpper);
+            }
+            
         }
 
         /// <summary>
@@ -57,15 +73,18 @@ namespace Lab2
         /// <param name="e"></param>
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Tasks.Solve((LinkList<Point>)Session["points"], (LinkList<Triangle>)Session["triangles"]);
-            Session["found"] = Tasks.FilterSuccess((LinkList<Triangle>)Session["triangles"]);
-            Session["unfound"] = Tasks.FilterUnSuccess((LinkList<Triangle>)Session["triangles"]);
+            Tasks.Solve((LinkList<Point>)Session["points"], (LinkList<Triangle>)Session["triangles_copy"]);
+            Session["found"] = Tasks.FilterSuccess((LinkList<Triangle>)Session["triangles_copy"]);
+            Session["unfound"] = Tasks.FilterUnSuccess((LinkList<Triangle>)Session["triangles_copy"]);
             ((LinkList<Triangle>)Session["found"]).Sort();
             ((LinkList<Triangle>)Session["unfound"]).Sort();
-            InOut.Print((LinkList<Triangle>)Session["found"], Server.MapPath("~") + resultsPath, "Rasti perimetrai:");
-            InOut.Print((LinkList<Triangle>)Session["unfound"], Server.MapPath("~") + resultsPath, "Nerasti perimetrai:");
-            FillTable((LinkList<Triangle>)Session["found"], ref results1, ref Nera3);
-            FillTable((LinkList<Triangle>)Session["unfound"], ref results2, ref Nera4);
+            InOut.PrintTxt((LinkList<Triangle>)Session["found"], Server.MapPath("~") + resultsPath, "Rasti perimetrai:",
+                trianglesUpper);
+            InOut.PrintTxt((LinkList<Triangle>)Session["unfound"], Server.MapPath("~") + resultsPath, "Nerasti perimetrai:",
+                trianglesUpper);
+            FillTable((LinkList<Triangle>)Session["found"], ref results1, ref Nera3, triangleHeaders);
+            FillTable((LinkList<Triangle>)Session["unfound"], ref results2, ref Nera4, triangleHeaders);
+            Button1.Enabled = false;
 
         }
 
@@ -95,9 +114,11 @@ namespace Lab2
                     Success.Text = "Šalinimas pavyko.";
                 else  
                     Success.Text = "Šalinimas nepavyko.";
-                FillTable((LinkList<Triangle>)Session["found"], ref results1, ref Nera3);
-                InOut.Print((LinkList<Triangle>)Session["found"], Server.MapPath("~") + resultsPath, "Rasti perimetrai:");
-                InOut.Print((LinkList<Triangle>)Session["unfound"], Server.MapPath("~") + resultsPath, "Nerasti perimetrai:");
+                FillTable((LinkList<Triangle>)Session["found"], ref results1, ref Nera3, triangleHeaders);
+                InOut.PrintTxt((LinkList<Triangle>)Session["found"], Server.MapPath("~") + resultsPath, "Rasti perimetrai:",
+                    trianglesUpper);
+                InOut.PrintTxt((LinkList<Triangle>)Session["unfound"], Server.MapPath("~") + resultsPath, "Nerasti perimetrai:",
+                    trianglesUpper);
             }
             
 
@@ -118,14 +139,17 @@ namespace Lab2
                     }
                 }
                 Session["points"] = InOut.ReadPoints(lines);
-                InOut.Print((LinkList<Point>)Session["points"], Server.MapPath("~") + startData, "Pradiniai duomenys \"U5a.txt\":");
-                FillTable((LinkList<Point>)Session["points"], ref start2, ref Nera2);
+                InOut.PrintTxt((LinkList<Point>)Session["points"], Server.MapPath("~") + startData, "Pradiniai duomenys \"U5a.txt\":", pointsUpper);
+                FillTable((LinkList<Point>)Session["points"], ref start2, ref Nera2, pointHeaders);
                 if (Session["triangles"] != null && Session["points"] != null)
                 {
                     Button1.Enabled = true;
                     Trinti.Enabled = true;
                 }
+                FileUpload1.Attributes.Add("style", "display: none");
+                Upload1.Enabled = false;
             }
+            
 
         }
 
@@ -144,16 +168,21 @@ namespace Lab2
                     }
                 }
                 Session["triangles"] = InOut.ReadTriangles(lines);
-                InOut.Print((LinkList<Triangle>)Session["triangles"], Server.MapPath("~") + startData, "Pradiniai duomenys \"U5b.txt\"");
-                FillTable((LinkList<Triangle>)Session["triangles"], ref start1, ref Nera1);
+                Session["triangles_copy"] = InOut.ReadTriangles(lines);
+                InOut.PrintTxt((LinkList<Triangle>)Session["triangles"], Server.MapPath("~") + startData, "Pradiniai duomenys \"U5b.txt\"",    
+                trianglesUpper);
+                FillTable((LinkList<Triangle>)Session["triangles"], ref start1, ref Nera1, triangleHeaders);
                 if (Session["triangles"] != null && Session["points"] != null)
                 {
                     Button1.Enabled = true;
                     Trinti.Enabled = true;
                 }
+                FileUpload2.Attributes.Add("style", "display: hidden");
+                Upload2.Enabled = false;
 
 
             }
+
         }
     }
 }

@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 
 namespace Lab2
 {
     /// <summary>
-    /// linked list class to store triangles
+    /// linked list class to store given type of elements, elements must implement IComparable and IEquatable interfaces
     /// </summary>
-    public sealed class LinkList<T> : IEnumerable<T> where T: class, IComparable<T>
+    public sealed class LinkList<T> : IEnumerable<T> where T: IComparable<T>, IEquatable<T>
     {
         /// <summary>
         /// Node class of linked list
@@ -41,7 +40,7 @@ namespace Lab2
         private Node a;
 
         /// <summary>
-        /// gets the cound of objects in linked list
+        /// gets the count of elements in linked list
         /// </summary>
         public int Count
         {
@@ -68,9 +67,9 @@ namespace Lab2
         }
 
         /// <summary>
-        /// adds given triangle to the end of linked lsit
+        /// adds given element to the end of linked lsit
         /// </summary>
-        /// <param name="triangle">triangle to add</param>
+        /// <param name="triangle">element to add</param>
         public void Add(T t)
         {
             Node newNode = new Node(t, null);
@@ -92,60 +91,75 @@ namespace Lab2
         public void Begin() => a = head;
 
         /// <summary>
-        /// moves to the next objec in for cycle in the outside of class
+        /// moves to the next element in for cycle in the outside of class
         /// </summary>
-        public void Next() => a = a.Link;
+        public void Next()
+        {
+            if(a == null)
+            {
+                return;
+            }
+            a = a.Link;
+        }
 
         /// <summary>
         /// checks if it is not the end of the list in for cycle in the outside of class
         /// </summary>
-        /// <returns></returns>
+        /// <returns>boolean value based on if node is is still in the list</returns>
         public bool Exist() => a != null;
 
         /// <summary>
         /// gets current element in for cycle in the outside of class
         /// </summary>
-        /// <returns></returns>
+        /// <returns>gets current element of list</returns>
         public T Get()
         {
-            if (a == null) return null;
+            if (a == null) return default;
             return a.Data;
         }
 
         /// <summary>
-        /// removes current triangle from linked list
+        /// removes current element from linked list
         /// </summary>
         public void Remove()
         {
-            bool isTail = false;
-            if (a == head)
-                head = a.Link;
-            else
+            if( a!= null)
             {
-                if (a == tail)
-                    isTail = true;
-                Node d1;
-                for(d1 = head; d1!= null; d1 = d1.Link)
+                bool isTail = false;
+                if (a == head)
+                    head = a.Link;
+                else
                 {
-                    if (d1.Link == a)
-                        break;
+                    if (a == tail)
+                        isTail = true;
+                    Node d1;
+                    for (d1 = head; d1 != null; d1 = d1.Link)
+                    {
+                        if (d1.Link == a)
+                            break;
+                    }
+                    d1.Link = a.Link;
+                    a.Link = null;
+                    if (isTail)
+                        tail = d1;
                 }
-                d1.Link = a.Link;
-                a.Link = null;
-                if (isTail)
-                    tail = d1;
             }
+            
         }
         /// <summary>
-        /// sets current triangle to given triangle
+        /// sets current element to given element
         /// </summary>
         /// <param name="tri">given triangle</param>
-        public void Set(T t) => a.Data = t;
+        public void Set(T t)
+        {
+            if (a != null)
+                a.Data = t;
+        }
 
         /// <summary>
-        /// sorts triangles by given comparator
+        /// sorts elements by their default CompareTo Method    
         /// </summary>
-        /// <param name="comparator">given comparator</param>
+
         public void Sort()
         {
             for(Node d1 = head; d1!= null; d1 = d1.Link)
@@ -161,22 +175,27 @@ namespace Lab2
                 minv.Data = t;
             }
         }
+        /// <summary>
+        /// implements foreach cycle in linked list
+        /// </summary>
+        /// <returns> enumerator</returns>
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            for(Node d1 = head; d1 != null; d1 = d1.Link)
+            {
+                yield return d1.Data;
+            }
+        }
 
         /// <summary>
         /// implements foreach cycle in linked list
         /// </summary>
         /// <returns> enumerator</returns>
-        public IEnumerator GetEnumerator()
-        {
-            for (Node d = head; d != null; d = d.Link)
-            {
-                yield return d.Data;
-            }
-        }
-
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
             throw new NotImplementedException();
         }
+
     }
 }

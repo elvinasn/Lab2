@@ -38,15 +38,34 @@ namespace Lab2
             return string.Format("| {0, -15} | {1, 5} | {2, 5} |", Color, CoordX, CoordY);
         }
 
+        /// <summary>
+        /// Implements IComparable interface, compares two points by their color
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns>returns >0 if first > second, 0 if first = second, <0 if first < second, compares by their color</returns>
         public int CompareTo(Point other)
         {
             return Color.CompareTo(other.Color);
         }
 
+        /// <summary>
+        /// implements IEquatable interface, checks if two points equals by their color
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns>true if points' colors matches, false if not</returns>
         public bool Equals(Point other)
         {
             return this.Color.Equals(other.Color);
         }
+        /// <summary>
+        /// overriden gethascode by point color
+        /// </summary>
+        /// <returns>overriden hashcode</returns>
+        public override int GetHashCode()
+        {
+            return Color.GetHashCode();
+        }
     }
+
 
 }
